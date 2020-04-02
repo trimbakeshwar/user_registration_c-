@@ -8,7 +8,7 @@ namespace regestration
         static string validateName = "^[A-Z][a-z]{3,}$";
         static string validateEmail = @"^((.[A-Z]+[a-z]*[0-9]*)|(.[A-Z]*[a-z]+[0-9]*)|(.[A-Z]*[a-z]*[0-9]+)?)?@.co(.[a-z]{2,})?$";
         static string validateMobileNumber = @"^[0-9]{2}[ ][0-9]{10}$";
-        static string validationPassword = @"^*(?=.*[A-Z])*(?=.*[0-9])(.{8,})$";
+        static string validationPassword = @"^.*(?=.*[A-Z])*(?=.*[0-9])*(?=.*[a-z])*(?=.*[!@#$%^&*_+]{1})(.{8,})$";
         Regex RegexName = new Regex(validateName);
         Regex RegexEmail = new Regex(validateEmail);
         Regex RegexNumber = new Regex(validateMobileNumber);
