@@ -1,29 +1,52 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-public class userRegistration
+namespace regestration
 {
-    public void validation(String name)
+    class userRegistration
     {
-        var expression = "^[A-Z][a-z]{3,}$";
-        var match = Regex.Match(name, expression, RegexOptions.None);
-        if (match.Success)
-            Console.WriteLine("valid");
-        else
-            Console.WriteLine("invalid");
-    }
-}
+        static string validateName = "^[A-Z][a-z]{3,}$";
+        static string validateEmail = @"^((.[A-Z]+[a-z]*[0-9]*)|(.[A-Z]*[a-z]+[0-9]*)|(.[A-Z]*[a-z]*[0-9]+)?)?.co(.[a-z]{2,})?$";
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("ENTER NAME : ");
-        String name = Console.ReadLine();
-        userRegistration user = new userRegistration();
-        user.validation(name);
-        Console.WriteLine("ENTER LASTNAME : ");
-        String lastName = Console.ReadLine();
-        user.validation(lastName);
+        Regex RegexName = new Regex(validateName);
+        Regex RegexEmail = new Regex(validateEmail);
+        public void validation(string name)
+        {
+
+            if (RegexName.IsMatch(name))
+            {
+                Console.WriteLine("valid");
+            }
+            else
+            {
+                Console.WriteLine("invalid");
+            }
+        }
+        public void validationEmail(string email)
+        {
+
+            if (RegexEmail.IsMatch(email))
+            {
+                Console.WriteLine("valid");
+            }
+            else
+            {
+                Console.WriteLine("invalid");
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            userRegistration user = new userRegistration();
+            Console.WriteLine("ENTER NAME : ");
+            string name = Console.ReadLine();
+            user.validation(name);
+            Console.WriteLine("ENTER LASTNAME : ");
+            string lastName = Console.ReadLine();
+            user.validation(lastName);
+            Console.WriteLine("ENTER Email : ");
+            string email = Console.ReadLine();
+            user.validationEmail(email);
+        }
     }
 }
